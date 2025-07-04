@@ -1,5 +1,5 @@
-INSERT INTO PRODUCT (
-    name, category, description, price, stock_quantity, imageurl, available, brand, expiry_date
+INSERT INTO product (
+    name, category, description, price, stock_quantity, image_Url, available, brand, expiry_date
 ) VALUES 
 (
     'Parle-G Biscuits', 'Snacks', 'Popular glucose biscuits', 10.00, 100, 'http://example.com/parleg.jpg', TRUE, 'Parle', '2025-12-31'
