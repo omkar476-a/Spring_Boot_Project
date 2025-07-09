@@ -1,7 +1,12 @@
 package com.example.project_1.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.node.JsonNodeType;
 
 @Entity
 @Table(name = "product")
@@ -26,8 +31,13 @@ public class Product {
     private boolean available;
     private String brand;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yy")
     @Column(name = "expiry_date")
-    private String expiryDate;
+    private LocalDate expiryDate;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yy")
+    @Column(name = "listed_date")
+    private LocalDate listedDate;
 
     // --- Getters and Setters ---
 
@@ -103,11 +113,22 @@ public class Product {
         this.brand = brand;
     }
 
-    public String getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(String expiryDate) {
+    public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
+    public LocalDate getListedDate() {
+        return listedDate;
+    }
+
+    public void setListedDate(LocalDate listedDate) {
+        this.listedDate = listedDate;
+    }
+
+    
+    
+
 }
