@@ -11,5 +11,8 @@ CREATE TABLE product (
     available BOOLEAN,
     brand VARCHAR(255),
     expiry_date DATE,
-    listed_date DATE -- ✅ Add this line
+    listed_date DATE,
+    image_name VARCHAR(255),
+    image_type VARCHAR(100),
+    image_date BLOB
 );

@@ -30,8 +30,40 @@ public class Product {
 
     private boolean available;
     private String brand;
+    
+    private String imageName;
+    private String imageType;
+    @Lob
+    private byte[] imageDate;
+    
+    
+    
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yy")
+    public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getImageType() {
+		return imageType;
+	}
+
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+
+	public byte[] getImageDate() {
+		return imageDate;
+	}
+
+	public void setImageDate(byte[] imageDate) {
+		this.imageDate = imageDate;
+	}
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yy")
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
     
