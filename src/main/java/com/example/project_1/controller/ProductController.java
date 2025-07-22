@@ -2,6 +2,7 @@ package com.example.project_1.controller;
 
 import com.example.project_1.model.Product;
 import com.example.project_1.service.ProductService;
+import com.example.project_1.service.WRSService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
+    
+    @Autowired
+    private WRSService wrsService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -88,4 +92,34 @@ public class ProductController {
             return new ResponseEntity<>("Product Not Found", HttpStatus.NOT_FOUND);
         }
     }
+    
+    
+    
+    @GetMapping("/wrs/parts")
+    public ResponseEntity<String> getWTPartsFromWindchill() {
+        try {
+            String partsJson = wrsService.getPartsData();
+            return ResponseEntity.ok(partsJson);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to fetch parts from Windchill: " + e.getMessage());
+        }
+    }
+    
+    
+    @GetMapping("/product/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword)
+    {
+    	List<Product> products =service.searchProducts(keyword);
+    	
+    	
+		return new ResponseEntity<>(products,HttpStatus.FOUND);
+    	
+    }
+    
+    
+    
+    
+    
+    
 }
