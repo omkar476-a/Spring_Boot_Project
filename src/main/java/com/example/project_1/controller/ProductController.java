@@ -17,6 +17,9 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 public class ProductController {
+	
+
+
 
     @Autowired
     private ProductService service;
@@ -26,6 +29,8 @@ public class ProductController {
 
     @Autowired
     private ObjectMapper objectMapper;
+    
+    
 
     @RequestMapping("/")
     public String greet() {
@@ -66,7 +71,7 @@ public class ProductController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(imageType))
-                .body(imageFile);
+                .body(imageFile);  
     }
 
     @PutMapping("/product/{id}")
@@ -117,6 +122,13 @@ public class ProductController {
     	
     }
     
+    
+    @GetMapping("/product/generateimage")
+    public String genrateImage(@RequestParam String text)
+    {
+		return text;
+    	
+    }
     
     
     
