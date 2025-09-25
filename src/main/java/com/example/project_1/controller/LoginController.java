@@ -11,7 +11,7 @@ import com.example.project_1.model.AuthResponse;
 import com.example.project_1.security.JwtUtil;
 import com.example.project_1.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:5173") // frontend URL
+@CrossOrigin(origins = "*") // frontend URL
 @RestController
 @RequestMapping("/auth")
 public class LoginController {
