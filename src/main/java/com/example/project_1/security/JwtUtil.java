@@ -13,7 +13,7 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtil {
 	
-	private SecretKey SCREAT=Keys.secretKeyFor(SignatureAlgorithm.HS256);;
+	private String SCREAT="mySuperSecretKeyForJwt";
 	private final long EXPIRATION =1000 * 60 *60;
 	
 
