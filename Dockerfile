@@ -3,12 +3,15 @@ FROM eclipse-temurin:21-jdk AS build
 
 WORKDIR /app
 
-# Copy pom.xml and src
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
+# Copy project files
 COPY pom.xml .
 COPY src ./src
 
-# Build the project using Maven wrapper
-RUN ./mvnw clean package -DskipTests
+# Build the project using Maven
+RUN mvn clean package -DskipTests
 
 # Stage 2: runtime
 FROM eclipse-temurin:21-jre
