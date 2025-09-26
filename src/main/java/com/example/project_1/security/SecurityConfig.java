@@ -42,7 +42,11 @@ public class SecurityConfig {
         // Enable CORS
         .cors(cors -> cors.configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("http://localhost:5173")); // React dev server
+            config.setAllowedOrigins(List.of(
+            		"http://localhost:5173",
+            		"https://spring-boot-project-2.onrender.com"
+            		
+            		)); // React dev server
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
             config.setAllowCredentials(true);
