@@ -65,7 +65,9 @@ public class SecurityConfig {
                 .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/**")).permitAll()
-
+                // Secured API endpoints
+                .requestMatchers(new AntPathRequestMatcher("/api/**")).authenticated() 
+                
                 // Role-based endpoints
                 .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
                 .requestMatchers(new AntPathRequestMatcher("/user/**")).hasRole("USER")
